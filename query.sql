@@ -52,3 +52,6 @@ BEGIN
    SET last_load = @lastload
    commit transaction;
    END;
+
+
+select * from source_cars_data where date_id >'@{activity('last_load').output.value[0].last_load}' AND date_id <= '@{activity('current_load').output.value[0].current_load}'
