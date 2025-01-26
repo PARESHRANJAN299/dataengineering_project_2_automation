@@ -1,0 +1,69 @@
+--data not read and write into the container. 
+
+--Output of last_load
+
+{
+	"count": 1,
+	"value": [
+		{
+			"last_load": "DT00000"
+		}
+	],
+	"effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (UK South)",
+	"billingReference": {
+		"activityType": "PipelineActivity",
+		"billableDuration": [
+			{
+				"meterType": "AzureIR",
+				"duration": 0.016666666666666666,
+				"unit": "Hours"
+			}
+		],
+		"totalBillableDuration": [
+			{
+				"meterType": "AzureIR",
+				"duration": 0.016666666666666666,
+				"unit": "Hours"
+			}
+		]
+	},
+	"durationInQueue": {
+		"integrationRuntimeQueue": 0
+	}
+}
+
+
+--Output of current_load
+--error
+{
+	"count": 1,
+	"value": [
+		{
+			"": "DT01245"
+		}
+	],
+	"effectiveIntegrationRuntime": "AutoResolveIntegrationRuntime (UK South)",
+	"billingReference": {
+		"activityType": "PipelineActivity",
+		"billableDuration": [
+			{
+				"meterType": "AzureIR",
+				"duration": 0.016666666666666666,
+				"unit": "Hours"
+			}
+		],
+		"totalBillableDuration": [
+			{
+				"meterType": "AzureIR",
+				"duration": 0.016666666666666666,
+				"unit": "Hours"
+			}
+		]
+	},
+	"durationInQueue": {
+		"integrationRuntimeQueue": 0
+	}
+}
+
+
+
