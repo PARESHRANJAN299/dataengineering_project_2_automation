@@ -1,3 +1,25 @@
+select * from sys.tables
+--Step -1 
+--We have created an empty table where data will come from various websites and be stored in our SQL database.
+-- Create a table
+create table source_cars_data(
+Branch_ID VARCHAR (200),
+Dealer_ID VARCHAR (200),
+Model_ID VARCHAR (200),
+Revenue BIGINT,
+Units_Sold	 BIGINT,
+Date_ID VARCHAR (200),
+Day INT,
+Month INT,
+Year INT,
+Branch_Name VARCHAR (250),
+Dealer_Name	VARCHAR (250),
+Product_Name VARCHAR (250)
+)
+
+
+-----------------------------------------------------------------------------------------------------------------
+
 CREATE TABLE WATHER_TABLE
 (
 LAST_LOAD VARCHAR(200),
