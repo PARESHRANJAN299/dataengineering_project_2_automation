@@ -1,5 +1,5 @@
 select * from sys.tables
---Step -1 
+
 --We have created an empty table where data will come from various websites and be stored in our SQL database.
 -- Create a table
 create table source_cars_data(
@@ -17,33 +17,38 @@ Dealer_Name	VARCHAR (250),
 Product_Name VARCHAR (250)
 )
 
+select * from [dbo].[source_cars_data]
 
------------------------------------------------------------------------------------------------------------------
-
-CREATE TABLE WATHER_TABLE
+CREATE TABLE [dbo].[WATHER_TABLE]
 (
-LAST_LOAD VARCHAR(200),
+last_load varchar (2000),
 )
 
-select max(DATE_ID) from source_cars_data;
-select * from WATHER_TABLE
-INSERT INTO WATHER_TABLE
-VALUES ('DT00000')
+select * from [dbo].[WATHER_TABLE]
 
-SELECT COUNT (*) FROM source_cars_data WHERE DATE_ID > 'DT00000'
+-- The minimum date will be displayed, indicating when sales started in our company(First Date of our sales).
+select MIN(Date_ID) from [dbo].[source_cars_data];
+--output Sales started date is - 'DT00000'
 
-SELECT COUNT (*) FROM source_cars_data
-drop PROCEDURE updateWathermarkTable
-CREATE PROCEDURE updateWathermarkTable
-  @lastload varchar (200)
+-- BUT we will consider from '0' this is the good approach
+INSERT INTO [dbo].[WATHER_TABLE] 
+VALUES ('DT00000');
 
-as 
-begin
---start the transation
-  begin transaction;
+-- same output will be come, and now we got it know our start sales date. 
+Select Count (*) from [dbo].[source_cars_data] where date_id > 'DT00000';
+select count (*) from [dbo].[source_cars_data]
 
---update the incremental coulmn in the table
-update wather_table 
-set last_load = @lastload
-commit transaction;
-END;
+
+CREATE PROCEDURE updatewatermark_table
+    @lastload Varchar(200)
+AS 
+BEGIN
+ --start the transaction
+
+   BEGIN TRANSACTION;
+
+   --Update the incremental column in the table 
+   UPDATE [dbo].[WATHER_TABLE] 
+   SET last_load = @lastload
+   commit transaction;
+   END;
